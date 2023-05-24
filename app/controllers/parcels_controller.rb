@@ -45,7 +45,11 @@ class ParcelsController < ApplicationController
   # PATCH/PUT /parcels/1 or /parcels/1.json
   def update
     respond_to do |format|
+      old_status = @parcel.status
       if @parcel.update(parcel_params)
+        unless old_status == @parcel.status
+          UserMailer.with(parcel: @parcel).status_changed.deliver_now
+        end
         format.html { redirect_to @parcel, notice: 'Parcel was successfully updated.' }
         format.json { render :show, status: :ok, location: @parcel }
       else

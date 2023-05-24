@@ -1,0 +1,4 @@
+Courier Weight,Courier Status,Courier Service Type,Sender,Receiver
+21.0,Delivered,Speed Post,rohan,sender
+11.0,In Transit,Regular,sender,receiver
+20.0,In Transit,Regular,rohan,sender
